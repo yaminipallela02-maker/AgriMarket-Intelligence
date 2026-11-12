@@ -1,5 +1,8 @@
 import os
 import sqlite3
+import hashlib
+import hmac
+import secrets
 from datetime import datetime
 from pathlib import Path
 
@@ -272,12 +275,35 @@ def init_db():
         conn.close()
 
 
+# Password helpers: PBKDF2-HMAC-SHA256 with a unique random salt.
+def _hash_password(password):
+    salt = secrets.token_hex(16)
+    digest = hashlib.pbkdf2_hmac("sha256", str(password).encode("utf-8"), salt.encode("utf-8"), 260000).hex()
+    return f"pbkdf2_sha256${salt}${digest}"
+
+def _verify_password(password, stored_value):
+    if not stored_value:
+        return False
+    if stored_value.startswith("pbkdf2_sha256$"):
+        try:
+            _, salt, expected = stored_value.split("$", 2)
+            actual = hashlib.pbkdf2_hmac("sha256", str(password).encode("utf-8"), salt.encode("utf-8"), 260000).hex()
+            return hmac.compare_digest(actual, expected)
+        except (ValueError, TypeError):
+            return False
+    # Backward compatibility: allow old plaintext accounts once, then upgrade.
+    return hmac.compare_digest(str(password), str(stored_value))
+
 # ============================================================
 # USER MANAGEMENT
 # ============================================================
 
 def register_user(name, email, password, phone=None, firebase_uid=None):
     """Register farmer account with complete phone and firebase UID support."""
+    name = str(name or "").strip()
+    email = str(email or "").strip().lower()
+    if not name or not email or not password:
+        return None
     conn = create_connection()
     try:
         phone_clean = None
@@ -302,7 +328,7 @@ def register_user(name, email, password, phone=None, firebase_uid=None):
         cursor = _execute(
             conn,
             "INSERT INTO users (name, email, password, phone, firebase_uid) VALUES (%s, %s, %s, %s, %s)",
-            (name, email, password, phone_clean, firebase_uid)
+            (name, email, _hash_password(password), phone_clean, firebase_uid)
         )
         new_id = cursor.lastrowid
         
@@ -329,13 +355,27 @@ def add_user(name, email, password):
 
 
 def get_user(email, password):
+    """Authenticate a user and transparently upgrade legacy plaintext passwords."""
     conn = create_connection()
     try:
-        return _fetchone(
+        row = _fetchone(
             conn,
-            "SELECT id, name, email, phone, firebase_uid FROM users WHERE email = %s AND password = %s",
-            (email, password)
+            "SELECT id, name, email, password, phone, firebase_uid FROM users WHERE email = %s",
+            (str(email).strip().lower(),)
         )
+        if not row or not _verify_password(password, row.get("password")):
+            return None
+
+        # Upgrade old plaintext passwords after a successful login.
+        if not str(row.get("password", "")).startswith("pbkdf2_sha256$"):
+            _execute(
+                conn,
+                "UPDATE users SET password = %s WHERE id = %s",
+                (_hash_password(password), row["id"])
+            )
+
+        row.pop("password", None)
+        return row
     finally:
         conn.close()
 
