@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AgriMarket Intelligence - IDP Project Report (Vignan's University)</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 25mm 20mm 25mm 25mm;
+            @bottom-right {
+                content: counter(page);
+            }
+        }
+        body {
+            font-family: "Times New Roman", Times, serif;
+            font-size: 12pt;
+            line-height: 1.5;
+            color: #111;
+            margin: 0;
+            padding: 40px;
+            background: #fff;
+        }
+        .page {
+            page-break-after: always;
+            min-height: 900px;
+        }
+        .center {
+            text-align: center;
+        }
+        .justify {
+            text-align: justify;
+        }
+        h1 {
+            font-size: 18pt;
+            font-weight: bold;
+            margin: 10px 0;
+            text-transform: uppercase;
+        }
+        h2 {
+            font-size: 15pt;
+            font-weight: bold;
+            margin: 20px 0 10px 0;
+            color: #1b5e20;
+            border-bottom: 1.5px solid #2e7d32;
+            padding-bottom: 4px;
+        }
+        h3 {
+            font-size: 13pt;
+            font-weight: bold;
+            margin: 15px 0 5px 0;
+        }
+        p {
+            margin: 8px 0;
+            text-indent: 30px;
+        }
+        .no-indent {
+            text-indent: 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 11pt;
+        }
+        th, td {
+            border: 1px solid #333;
+            padding: 8px 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f1f8e9;
+            font-weight: bold;
+        }
+        .box {
+            border: 2px solid #2e7d32;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            background: #fafdfa;
+        }
+        .sign-table {
+            width: 100%;
+            border: none;
+            margin-top: 50px;
+        }
+        .sign-table td {
+            border: none;
+            text-align: center;
+            vertical-align: top;
+            padding: 10px;
+        }
+        @media print {
+            body { padding: 0; }
+            .no-print { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- PAGE 1: TITLE PAGE -->
+    <div class="page center">
+        <br><br>
+        <h1>AGRIMARKET INTELLIGENCE</h1>
+        <h3>SMART AGRICULTURE & APMC MANDI MARKET PRICE FORECASTING SYSTEM</h3>
+        <p class="no-indent"><b>An IDP Project Report Submitted in Partial Fulfillment of the Requirements for the Award of the Degree of</b></p>
+        <br>
+        <h3>BACHELOR OF TECHNOLOGY</h3>
+        <p class="no-indent"><b>in</b></p>
+        <h3>DATA SCIENCE</h3>
+        <br>
+        <p class="no-indent"><b>Submitted by:</b></p>
+        <table style="width: 75%; margin: 0 auto; border: none;">
+            <tr style="border: none;">
+                <td style="border: none; font-weight: bold;">P. YAMINI</td>
+                <td style="border: none; font-weight: bold;">(Reg. No. 241FA23018)</td>
+            </tr>
+            <tr style="border: none;">
+                <td style="border: none; font-weight: bold;">V. LEELA NANDHU NAIDU</td>
+                <td style="border: none; font-weight: bold;">(Reg. No. 241FA23048)</td>
+            </tr>
+            <tr style="border: none;">
+                <td style="border: none; font-weight: bold;">CH. TEJO VARDHAN KANTH</td>
+                <td style="border: none; font-weight: bold;">(Reg. No. 241FA23061)</td>
+            </tr>
+        </table>
+        <br>
+        <p class="no-indent"><b>Under the Esteemed Guidance of:</b></p>
+        <p class="no-indent"><b>Dr. M. NIRUPAMA BHATTA</b><br>
+        Professor & Head of Department, Cyber Security and Data Science</p>
+        <br><br>
+        <p class="no-indent"><b>DEPARTMENT OF ADVANCED COMPUTER SCIENCE AND ENGINEERING<br>
+        SCHOOL OF COMPUTING AND INFORMATICS<br>
+        VIGNAN'S FOUNDATION FOR SCIENCE, TECHNOLOGY & RESEARCH<br>
+        (Deemed to be University)<br>
+        Vadlamudi, Guntur District, Andhra Pradesh - 522213</b></p>
+        <p class="no-indent"><b>November - 2026</b></p>
+    </div>
+
+    <!-- PAGE 2: CERTIFICATE -->
+    <div class="page">
+        <div class="center">
+            <h3>VIGNAN'S FOUNDATION FOR SCIENCE, TECHNOLOGY & RESEARCH</h3>
+            <p class="no-indent"><b>(Deemed to be University), Vadlamudi, Guntur, AP - 522213</b><br>
+            Department of Advanced Computer Science and Engineering</p>
+            <br>
+            <h2>BONAFIDE CERTIFICATE</h2>
+        </div>
+        <br>
+        <p class="justify">
+            This is to certify that the project entitled <b>“AGRIMARKET INTELLIGENCE – SMART AGRICULTURE & APMC MANDI MARKET PRICE FORECASTING SYSTEM”</b> being submitted by <b>P. Yamini (Reg. No. 241FA23018), V. Leela Nandhu Naidu (Reg. No. 241FA23048), and CH. Tejo Vardhan Kanth (Reg. No. 241FA23061)</b> in partial fulfillment of the requirements for the award of the degree of <b>Bachelor of Technology in Data Science</b>, Department of Advanced Computer Science and Engineering, Vignan’s Foundation for Science, Technology and Research (Deemed to be University), Vadlamudi, is a bonafide record of project work carried out by them under my guidance and supervision.
+        </p>
+        <p class="justify">
+            The results embodied in this report have not been submitted to any other University or Institute for the award of any degree or diploma.
+        </p>
+        <br><br><br>
+        <table class="sign-table">
+            <tr>
+                <td><b>Dr. M. Nirupama Bhatta</b><br>Project Supervisor / Guide<br>Professor, Dept. of ACSE</td>
+                <td><b>Mr. Amar Jukuntla</b><br>Project Co-ordinator<br>Asst. Professor, Dept. ACSE</td>
+                <td><b>Dr. M. Nirupama Bhatta</b><br>Head of Department<br>Cyber Security & Data Science</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- PAGE 3: DECLARATION -->
+    <div class="page">
+        <div class="center">
+            <h2>DECLARATION</h2>
+        </div>
+        <br><br>
+        <p class="justify">
+            We hereby declare that the project titled <b>“AGRIMARKET INTELLIGENCE – SMART AGRICULTURE & APMC MANDI MARKET PRICE FORECASTING SYSTEM”</b> submitted to Vignan’s Foundation for Science, Technology & Research (Deemed to be University), Vadlamudi, for the award of the degree of <b>Bachelor of Technology in Data Science</b>, is an original work done by us under the guidance of <b>Dr. M. Nirupama Bhatta</b>, Professor & HOD, Cyber Security and Data Science.
+        </p>
+        <p class="justify">
+            We further declare that this report has not previously formed the basis for the award of any degree, diploma, associateship, or fellowship in any other institution or university.
+        </p>
+        <br><br><br>
+        <div style="float: right; text-align: left; width: 300px;">
+            <p class="no-indent"><b>P. YAMINI</b> (241FA23018)</p>
+            <p class="no-indent"><b>V. LEELA NANDHU NAIDU</b> (241FA23048)</p>
+            <p class="no-indent"><b>CH. TEJO VARDHAN KANTH</b> (241FA23061)</p>
+        </div>
+        <div style="clear: both;"></div>
+        <br><br>
+        <p class="no-indent"><b>Place:</b> Vadlamudi<br><b>Date:</b> 12th November, 2026</p>
+    </div>
+
+    <!-- PAGE 4: ABSTRACT -->
+    <div class="page">
+        <div class="center">
+            <h2>ABSTRACT</h2>
+        </div>
+        <br>
+        <p class="justify">
+            Agriculture remains the cornerstone of the Indian economy, engaging over 58% of the rural population. However, farmers continually face acute vulnerabilities due to extreme APMC Mandi price volatility, market arrival gluts, intermediary rent-seeking, and unscientific crop selection. This project, titled <b>“AgriMarket Intelligence – Smart Agriculture & APMC Mandi Market Price Forecasting System,”</b> presents an end-to-end data-driven decision support platform engineered using Machine Learning, Relational Databases (MySQL 8.0 / SQLite dual architecture), and Streamlit Cloud.
+        </p>
+        <p class="justify">
+            The platform operationalizes three core Machine Learning pipelines trained on real-world government datasets:
+        </p>
+        <ul>
+            <li><b>APMC Mandi Price Forecasting:</b> An XGBoost Regressor trained on 6,687 official Agmarknet transaction records across Indian market yards to forecast future modal prices per Quintal and per Kilogram across 12 monthly horizons (R² > 0.94).</li>
+            <li><b>Arrival Demand Forecasting:</b> An XGBoost Regressor (R² = 0.9965) forecasting seasonal arrival volume surges to help farmers avoid harvest supply gluts.</li>
+            <li><b>Scientific Crop Recommendation:</b> A Random Forest Classifier achieving 94.81% accuracy across 2,700 agricultural scientific records spanning 22+ crops evaluated on soil Nitrogen (N), Phosphorus (P), Potassium (K), Soil pH, Temperature, Humidity, and Rainfall.</li>
+        </ul>
+        <p class="justify">
+            The system incorporates Firebase Mobile Phone OTP authentication with live countdown expiration and smart fallback, an interactive bilingual Voice & Text Assistant in Telugu and English featuring Web Speech recognition and audio Text-to-Speech (TTS), and a secure multi-table database architecture ensuring offline resilience and cloud scalability.
+        </p>
+        <br>
+        <p class="no-indent"><b>Keywords:</b> APMC Mandi, XGBoost, Random Forest, Price Forecasting, Soil N-P-K, Bilingual Voice NLP, Streamlit, MySQL 8.0, Smart Agriculture.</p>
+    </div>
+
+    <!-- PAGE 5: CHAPTER SUMMARY & ARCHITECTURE -->
+    <div class="page">
+        <h2>CHAPTER 1: SYSTEM ARCHITECTURE & METHODOLOGY</h2>
+        <br>
+        <div class="box">
+            <h3 style="margin-top:0; color:#1b5e20;">Architecture Overview</h3>
+            <p class="no-indent"><b>Tier 1 (Presentation Layer):</b> Streamlit Responsive Web Application, HTML5 Web Speech Voice Recognition & Synthesis Engine, Firebase Phone OTP Component with 5-minute ticking countdown timer.</p>
+            <p class="no-indent"><b>Tier 2 (Intelligence & ML Layer):</b> Scikit-Learn Preprocessing Pipelines, XGBoost Price Regressor, XGBoost Demand Volume Forecaster, Random Forest Agronomic Classifier (94.81% Accuracy).</p>
+            <p class="no-indent"><b>Tier 3 (Data Persistence Layer):</b> Dual-layer Relational Database: Enterprise MySQL 8.0 with automatic SQLite fallback for high availability.</p>
+        </div>
+
+        <h3>Key Model Evaluation Metrics</h3>
+        <table>
+            <tr>
+                <th>Model Pipeline</th>
+                <th>Algorithm</th>
+                <th>Training Dataset</th>
+                <th>Key Metric</th>
+            </tr>
+            <tr>
+                <td>Mandi Price Forecast</td>
+                <td>XGBoost Regressor</td>
+                <td>Agmarknet Mandi (6,687 records)</td>
+                <td>R² Score: 0.9412</td>
+            </tr>
+            <tr>
+                <td>Market Arrival Demand</td>
+                <td>XGBoost Regressor</td>
+                <td>APMC Mandi Volume Logs</td>
+                <td>R² Score: 0.9965</td>
+            </tr>
+            <tr>
+                <td>Crop Suitability</td>
+                <td>Random Forest Classifier</td>
+                <td>ICAR Scientific Soil (2,700 rows)</td>
+                <td>Accuracy: 94.81%</td>
+            </tr>
+        </table>
+
+        <h3>Database Schema (MySQL 8.0 / SQLite)</h3>
+        <ul>
+            <li><b>users:</b> id, name, email, password, phone, firebase_uid, created_at</li>
+            <li><b>crops:</b> id, user_id, crop_name, planting_date, land_area, expected_harvest_date, water_source, pesticide_usage</li>
+            <li><b>crop_history:</b> id, user_id, crop_name, quantity, harvest_date</li>
+            <li><b>predictions:</b> id, user_id, prediction_type, crop_name, predicted_value, unit, horizon_date</li>
+            <li><b>transactions:</b> id, user_id, crop_name, quantity, price, total_amount, buyer_name, status</li>
+            <li><b>profiles:</b> user_id, phone, location, village, district, state, land_area</li>
+        </ul>
+        <br>
+        <div class="center no-print">
+            <button onclick="window.print()" style="background:#2e7d32; color:white; padding:12px 24px; font-size:14pt; border:none; border-radius:6px; cursor:pointer;">
+                🖨️ Click Here to Print or Save as PDF (Ctrl + P)
+            </button>
+        </div>
+    </div>
+
+</body>
+</html>
